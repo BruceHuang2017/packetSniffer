@@ -1,4 +1,4 @@
 
-public class EthernetPacket extends PacketEncode{
+public class EthernetPacket extends Packet{
 
 }
