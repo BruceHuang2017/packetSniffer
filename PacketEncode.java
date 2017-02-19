@@ -12,8 +12,6 @@ public class PacketEncode{
 
   public static byte [] getHeader(int offset, int headerLen, byte [] bytes){
 
-
-
     return header;
   }
 
