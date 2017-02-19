@@ -1,4 +1,4 @@
 
-public class EthernetPacket extends PacketDriver{
+public class EthernetPacket extends PacketEncode{
 
 }
