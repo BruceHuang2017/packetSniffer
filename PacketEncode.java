@@ -4,15 +4,17 @@ import java.nio.ByteBuffer;
  * Packet driver.
  * Fetch a packet from internet and teardown to header and payload.
  * Default for ethernet frame.
+ * offset = 0, headerLen =
  */
 
 public class PacketEncode{
 
-  public static byte getHeader(){
+
+  public static byte [] getHeader(){
 
   }
 
-  public static byte getData(){
+  public static byte [] getData(){
 
   }
 
