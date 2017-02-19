@@ -8,10 +8,11 @@ import java.nio.ByteBuffer;
  */
 
 
-public class PacketEncode{
+public class Packet{
 
   public static byte [] getHeader(int offset, int headerLen, byte [] bytes){
-    
+    byte [] header = new byte[headerLen];
+    int
     return header;
   }
 
