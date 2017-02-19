@@ -17,6 +17,9 @@ public class PacketEncode{
 
   public static byte [] getData(){
 
+    return data;
   }
+
+
 
 }
