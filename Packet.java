@@ -1,11 +1,8 @@
 import java.nio.ByteBuffer;
-
 /**
  * Packet driver.
  * Fetch a packet from internet and teardown to packetheader and packetdata.
  */
-
-
 public class Packet{
 
   public static byte [] getHeader(int offset, int headerLen, byte [] byteData){
@@ -20,6 +17,14 @@ public class Packet{
     offset = offset + headerLen;
     System.arraycopy(bytes, offset, data, 0, dataLength);
     return data;
+  }
+
+  public static String getSrcAddress(int offset, byte [] byteData){
+    
+  }
+
+  public static String getDstAddress(int offset, byte [] byteData){
+
   }
 
 }
