@@ -19,7 +19,6 @@ public class Packet{
     return data;
   }
 
-
   public static String getSrcAddress(int offset, byte [] byteData){
 
   }
