@@ -1,5 +1,6 @@
 import java.nio.ByteBuffer;
 
+
 /**
  * Packet driver.
  * Fetch a packet from internet and teardown to packetheader and packetdata.
@@ -21,7 +22,5 @@ public class Packet{
     System.arraycopy(bytes, offset, data, 0, dataLength);
     return data;
   }
-
-
 
 }
