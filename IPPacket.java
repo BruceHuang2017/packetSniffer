@@ -6,7 +6,7 @@ public class IPPacket extends EthernetPacket {
 
   public IPPacket(int headerLen, byte [] byteData){
     super(headerLen, byteData);
-    this.header = getHeader(headerLen, 20, byteData);
+    this.header = getHeader(headerLen, 20, byteData); //20 bytes headerlength
     this.data = getData(headerLen, 20, byteData);
   }
 
@@ -26,7 +26,7 @@ public class IPPacket extends EthernetPacket {
 
 // offset 8, length of protocol field is 1
   public int getIPProtocol(){
-    return getProtocol( 8, 1 , header);
+    return getProtocol( 8, 1 , header); // icmp 0x01, tcp 0x06, udp 0x11, others.
   }
 
 

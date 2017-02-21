@@ -64,7 +64,7 @@ public class EthernetPacket extends Packet{
 */
 // offset 12, length of type field is 2
 
-  return getProtocol(12, 2, byteData);
+    return getProtocol(12, 2, byteData); // ip 0x0800, arp 0x0806, others.
   }
 
 

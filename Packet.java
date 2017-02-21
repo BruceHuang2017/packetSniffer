@@ -16,6 +16,8 @@ public class Packet{
 
   public static byte [] getData(int offset, int headerLen, byte [] byteData){
     int dataLength = bytes.length - offset - headerLen;
+    if (dataLength <= 0)
+      return new byte[0];
     byte [] data = new byte[dataLength];
     offset = offset + headerLen;
     System.arraycopy(bytes, offset, data, 0, dataLength);
