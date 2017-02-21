@@ -10,8 +10,8 @@ public class EthernetPacket extends Packet{
   int typeOffset = 12;
   int widthOfType = 2;
   int widthOfAddress = 6;
-  int IP = 0x0800;
-  int ARP = 0x0806;
+//  int IP = 0x0800;
+//  int ARP = 0x0806;
 
 // methods in this class.
 
@@ -30,12 +30,12 @@ public class EthernetPacket extends Packet{
 
 // overwrite getheader
   public byte[] getHeader(){
-    return getEthernetHeader;
+    return getEthernetHeader();
   }
 
 // overwrite getdata or get payload
   public byte[] getData(){
-    return getEthernetData;
+    return getEthernetData();
   }
 
   public String getEthernetSrcAddress(){
@@ -47,9 +47,15 @@ public class EthernetPacket extends Packet{
   }
 
 
-// two options of protocols: ip and arp.
-  public int getEthernetType(){
-    return getProtocol();
+// two options of protocols: ip [08][00] and arp[08][06].
+  public byte [] getEthernetType(){
+    byte [] value = new byte [widthOfType];
+    for(int i=0; i<widthOfType; i++)
+      value[i] = byteData[typeOffset + i];
+    return value;
   }
+
+
+
 
 }
