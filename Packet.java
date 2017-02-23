@@ -4,9 +4,9 @@ import java.nio.ByteBuffer;
  * Fetch a packet from internet and teardown to packetheader and packetdata.
  */
 
-public class Packet{
+public class Packet extends PacketDriver{
 
-  SimplePacketDriver driver=new SimplePacketDriver();
+//  SimplePacketDriver driver=new SimplePacketDriver();
 
   public static byte [] getHeader(int offset, int headerLen, byte [] byteData){
     byte [] header = new byte[headerLen];
