@@ -11,11 +11,11 @@ public class TCPPacket extends IPPacket {
     this.data = getData(offset, 20, byteData);
   }
 
-  public byte[] getHeader(){
+  public byte[] getTCPHeader(){
     return header;
   }
 
-  public byte [] getData(){
+  public byte [] getTCPData(){
     return data;
   }
 
@@ -26,6 +26,5 @@ public class TCPPacket extends IPPacket {
   public int getDstPort(){
     return getPort(30, 4, byteData); //port start at 31
   }
-
 
 }

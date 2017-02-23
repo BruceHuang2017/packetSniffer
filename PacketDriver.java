@@ -2,7 +2,7 @@ public class PacketDriver(){
 
 	SimplePacketDriver driver = new SimplePacketDriver();
 	String[] adapter = driver.getAdapterNames[];
-	byte [] packet=driver.readPacket();
+	byte [] packet = driver.readPacket();
 	ByteBuffer Packet = ByteBuffer.wrap(packet);
 
 
@@ -30,6 +30,6 @@ public class PacketDriver(){
 		return driver.openAdapter(adapters[0]);
 	}
 
-	
+
 
 }

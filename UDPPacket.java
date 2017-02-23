@@ -11,11 +11,11 @@ public class UDPPacket extends IPPacket {
     this.data = getData(offset, 8, byteData);
   }
 
-  public byte[] getHeader(){
+  public byte[] getUDPHeader(){
     return header;
   }
 
-  public byte [] getData(){
+  public byte [] getUDPData(){
     return data;
   }
 

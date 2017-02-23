@@ -29,20 +29,6 @@ public class EthernetPacket extends Packet{
     return data;
   }
 
-/*
-
-// overwrite getheader
-  public byte[] getHeader(){
-    return getEthernetHeader();
-  }
-
-// overwrite getdata or get payload
-  public byte[] getData(){
-    return getEthernetData();
-  }
-
-*/
-
   public String getEthernetSrcAddress(){
     return getAddress(0, 6, byteData);
   }

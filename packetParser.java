@@ -24,15 +24,35 @@ public class packetParser{
           break;
 // Save output to filename, can only save one file for now, could use while loop to get mutipule packets.
         case "-o":
-
           String content = PacketDriver.getByteArrayPacket();
           Files.write(Paths.get(packetParserOutput.txt), content.getBytes(), StandardOpenOption.CREATE);
-
           break;
 
 // Print only packets of the specified type where type is one of: eth, arp, ip, icmp, tcp or udp
         case "-t": // should include -h somehow.
+            switch(args[1]){
+              case "eth":
+                byte [] ethHeader = Packet.getEthernetHeader();
+                break;
+              case "arp":
+                byte [] arpHeader = Packet.getARPHeader();
+                break;
+              case "ip":
+                byte [] ipHeader = Packet.getIPHeader();
+                break;
+              case "icmp":
 
+                break;
+              case "tcp":
+
+                break;
+              case "udp":
+
+                break;
+              default:
+                System.out.println("Illegal parameter usage");
+                return;
+            }
           break;
 
 // Print header info only as specified by -t
