@@ -1,18 +1,32 @@
 import java.nio.ByteBuffer;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class packetParser{
   public static void main(String[] args) {
       switch (args[0]) {
 // Exit after receiving count packets
         case "-c":
-
+          for (int count = 0; count<args[1]; count ++)
+            System.out.println(PacketDriver.getStringPacket();)
           break;
 // Read packets from file (your program should read packets from the network by default)
         case "-r":
-
+          if (args[1]==null) {
+              while(true){
+                PacketDriver.getStringPacket();
+              }
+          }else{
+            String content = new String(Files.readAllBytes(Paths.get(args[1])));
+            System.out.println(content);
+          }
           break;
-// Save output to filename
+// Save output to filename, can only save one file for now, could use while loop to get mutipule packets.
         case "-o":
+
+          String content = PacketDriver.getByteArrayPacket();
+          Files.write(Paths.get(packetParserOutput.txt), content.getBytes(), StandardOpenOption.CREATE);
 
           break;
 
