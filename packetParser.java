@@ -17,13 +17,13 @@ public class packetParser{
           break;
 
 // Print only packets of the specified type where type is one of: eth, arp, ip, icmp, tcp or udp
-        case "-t":
+        case "-t": // should include -h somehow.
 
           break;
 
 // Print header info only as specified by -t
         case "-h":
-
+          System.out.println("Print header info only as specified by -t");
           break;
 
 // Print only packets with source address equal to saddress
@@ -55,6 +55,7 @@ public class packetParser{
         case "-dpost":
 
           break;
+
         default:
           System.out.println("Illegal parameter usage.");
           return;

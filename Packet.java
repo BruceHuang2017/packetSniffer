@@ -39,5 +39,9 @@ public class Packet{
     return value;
   }
 
+  public static int getPort(int offset, int widthOfPort, byte [] byteData){
+    return getProtocol(offset, widthOfPort, byteData);
+  }
+
 
 }

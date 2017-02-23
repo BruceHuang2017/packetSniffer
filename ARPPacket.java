@@ -9,10 +9,13 @@ public class ARPPacket extends EthernetPacket{
   }
 
   public byte [] getARPHeader(){
-    return header;
+    return header; //totally 28 bytes
   }
 
   public byte [] getARPData(){
     return new byte[0];
   }
+
+
+
 }
