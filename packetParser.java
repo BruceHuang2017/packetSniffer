@@ -30,34 +30,82 @@ public class packetParser{
 
 // Print only packets of the specified type where type is one of: eth, arp, ip, icmp, tcp or udp
         case "-t": // should include -h somehow.
-            switch(args[1]){
-              case "eth":
-                byte [] ethHeader = Packet.getEthernetHeader();
-                break;
-              case "arp":
-                byte [] arpHeader = Packet.getARPHeader();
-                break;
-              case "ip":
-                byte [] ipHeader = Packet.getIPHeader();
-                break;
-              case "icmp":
+          if (args.length == 3) {
+            if(args[2] == "-t"){
+              // print selected header.
+              switch(args[1]){
+                case "eth":
+                  byte [] ethHeader = Packet.getEthernetHeader();
 
-                break;
-              case "tcp":
+                  break;
+                case "arp":
+                  byte [] arpHeader = Packet.getARPHeader();
 
-                break;
-              case "udp":
+                  break;
+                case "ip":
+                  byte [] ipHeader = Packet.getIPHeader();
 
-                break;
-              default:
-                System.out.println("Illegal parameter usage");
-                return;
+                  break;
+                case "icmp":
+                  byte [] icmpHeader = Packet.getICMPHeader();
+
+                  break;
+                case "tcp":
+                  byte [] tcpHeader = Packet.getTCPHeader();
+
+                  break;
+                case "udp":
+                  byte [] udpHeader = Packet.getUDPHeader();
+
+
+                  break;
+                default:
+                  System.out.println("Illegal parameter usage");
+                  return;
+                }
+              }
+            }else if(args.length == 2){
+              // print selected whole package.
+              switch(args[1]){
+                case "eth":
+                // assume all packets are eth pac.
+                  byte [] ethPacket = Packet.getEthernetPacket();
+
+                  break;
+                case "arp":
+                  byte [] arpPacket = Packet.getARPPacket();
+
+                  break;
+                case "ip":
+                  byte [] ipPacket = Packet.getIPPacket();
+
+                  break;
+                case "icmp":
+                  byte [] icmpPacket = Packet.getICMPPacket();
+
+                  break;
+                case "tcp":
+                  byte [] tcpPacket = Packet.getTCPPacket();
+
+                  break;
+                case "udp":
+                  byte [] udpPacket = Packet.getUDPPacket();
+
+
+                  break;
+                default:
+                  System.out.println("type is not legal.");
+                  return;
+                }
+            }else{
+              // not '-t type -h' or '-t type'.
+              System.out.println("not '-t type -h' or '-t type'.");
             }
           break;
 
 // Print header info only as specified by -t
         case "-h":
-          System.out.println("Print header info only as specified by -t");
+          System.out.println("Print header info only as specified by -t.");
           break;
 
 // Print only packets with source address equal to saddress

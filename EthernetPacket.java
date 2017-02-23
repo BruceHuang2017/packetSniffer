@@ -21,6 +21,11 @@ public class EthernetPacket extends Packet{
     this.data = getData(0, headerLen, byteData);
   }
 
+  public byte[] getEthernetPacket(){
+    //0 offset
+    return getWholePacket(0, byteData);
+  }
+
   public byte[] getEthernetHeader(){
     return header;
   }

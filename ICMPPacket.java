@@ -12,6 +12,11 @@ public class ICMPPacket extends IPPacket {
     this.data = getData(offset, 4, byteData);
   }
 
+  public byte[] getICMPPacket(){
+    //eth header 14 + IP 20
+    return getWholePacket(34, byteData);
+  }
+
   public byte[] getICMPHeader(){
     return header;
   }

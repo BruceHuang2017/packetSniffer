@@ -10,6 +10,11 @@ public class IPPacket extends EthernetPacket {
     this.data = getData(headerLen, 20, byteData);
   }
 
+  public byte[] getIPPacket(){
+    //eth header 14
+    return getWholePacket(14, byteData);
+  }
+
   public byte [] getIPHeader(){
     return header;
   }

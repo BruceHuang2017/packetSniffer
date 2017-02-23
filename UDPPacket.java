@@ -11,6 +11,10 @@ public class UDPPacket extends IPPacket {
     this.data = getData(offset, 8, byteData);
   }
 
+  public byte[] getUDPPacket(){
+    //eth header 14 + IP 20
+    return getWholePacket(34, byteData);
+  }
   public byte[] getUDPHeader(){
     return header;
   }

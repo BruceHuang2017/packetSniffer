@@ -15,12 +15,12 @@ public class Packet extends PacketDriver{
   }
 
   public static byte [] getData(int offset, int headerLen, byte [] byteData){
-    int dataLength = bytes.length - offset - headerLen;
+    int dataLength = byteData.length - offset - headerLen;
     if (dataLength <= 0)
       return new byte[0];
     byte [] data = new byte[dataLength];
     offset = offset + headerLen;
-    System.arraycopy(bytes, offset, data, 0, dataLength);
+    System.arraycopy(byteData, offset, data, 0, dataLength);
     return data;
   }
 
@@ -41,6 +41,13 @@ public class Packet extends PacketDriver{
 
   public static int getPort(int offset, int widthOfPort, byte [] byteData){
     return getProtocol(offset, widthOfPort, byteData);
+  }
+
+  public static byte [] getWholePacket(int offset, byte[] byteData){
+    int packetLength = byteData.length - offset;
+    byte [] packet = new byte[packetLength];
+    System.arraycopy(byteData, offset, packet, 0, packetLength);
+    return packet;
   }
 
 

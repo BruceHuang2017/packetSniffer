@@ -11,6 +11,11 @@ public class TCPPacket extends IPPacket {
     this.data = getData(offset, 20, byteData);
   }
 
+  public byte[] getTCPPacket(){
+    //eth header 14 + IP 20
+    return getWholePacket(34, byteData);
+  }
+
   public byte[] getTCPHeader(){
     return header;
   }
