@@ -3,26 +3,26 @@ public class ICMPPacket extends IPPacket {
 
   byte [] header;
   byte [] data;
+  byte [] packet;
 
-  public ICMPPacket(int headerLen, byte [] byteData){
-//    super(headerLen, byteData);
-//    int offset = headerLen + 20;// ethernet + IP
-    int offset = 14 + 20;// ethernet + IP
-    this.header = getHeader(offset, 4, byteData); //headerlength = 4
+  public ICMPPacket(int ethernetHeaderLen, byte [] byteData){
+    super(ethernetHeaderLen, byteData);
+    int offset = ethernetHeaderLen + 20; // ethernet + IP
+    this.header = getHeader(offset, 4, byteData); //icmp Header Length = 4
     this.data = getData(offset, 4, byteData);
+    this.packet = getWholePacket(offset, byteData);
   }
 
   public byte[] getICMPPacket(){
-    //eth header 14 + IP 20
-    return getWholePacket(34, byteData);
+    return packet;
   }
 
   public byte[] getICMPHeader(){
-    return header;
+    return header; // size 4
   }
 
   public byte [] getICMPData(){
-    return data;
+    return data; // size 4
   }
 
 }

@@ -3,24 +3,26 @@ public class IPPacket extends EthernetPacket {
 
   byte [] header;
   byte [] data;
+  byte [] packet;
 
-  public IPPacket(int headerLen, byte [] byteData){
-    super(headerLen, byteData);
-    this.header = getHeader(headerLen, 20, byteData); //20 bytes headerlength
-    this.data = getData(headerLen, 20, byteData);
+  public IPPacket(int ethernetHeaderLen, byte [] byteData){
+    super(ethernetHeaderLen, byteData);
+    int offset = ethernetHeaderLen;
+    this.header = getHeader(offset, 20, byteData); //20 bytes ip default
+    this.data = getData(offset, 20, byteData);
+    this.packet = getWholePacket(offset, byteData);
   }
 
   public byte[] getIPPacket(){
-    //eth header 14
-    return getWholePacket(14, byteData);
+    return packet;
   }
 
   public byte [] getIPHeader(){
-    return header;
+    return header; //size 20
   }
 
   public byte [] getIPData(){
-    return data;
+    return data; //size ?
   }
 
 // IPv4
@@ -33,6 +35,7 @@ public class IPPacket extends EthernetPacket {
   public int getIPProtocol(){
     return getProtocol( 8, 1 , header); // icmp 0x01, tcp 0x06, udp 0x11, others.
   }
+  // tcp = 6, udp = 17, icmp = 1
 
 
 }

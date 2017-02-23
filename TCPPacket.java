@@ -3,33 +3,36 @@ public class TCPPacket extends IPPacket {
 
   byte [] header;
   byte [] data;
+  byte [] packet;
 
-  public TCPPacket(int headerLen, byte [] byteData){
-    super(headerLen, byteData);
-    int offset = 14 + 20; //14 for ethernet, 20 for ip header, no option is included.
+  public TCPPacket(int ethernetHeaderLen, byte [] byteData){
+    super(ethernetHeaderLen, byteData);
+    int offset = ethernetHeaderLen + 20;
+//14 for ethernet, 20 for ip header, no option is included.
+//default TCP header length == 20
     this.header = getHeader(offset, 20, byteData);
     this.data = getData(offset, 20, byteData);
+    this.packet = getWholePacket(offset, byteData);
   }
 
   public byte[] getTCPPacket(){
-    //eth header 14 + IP 20
-    return getWholePacket(34, byteData);
+    return packet;
   }
 
   public byte[] getTCPHeader(){
-    return header;
+    return header; //size 20
   }
 
   public byte [] getTCPData(){
-    return data;
+    return data; // size ?
   }
 
   public int getSrcPort(){
-    return getPort(26, 4, byteData); // port start at 27
+    return getPort(26, 4, byteData); // port start at 27, size 4
   }
 
   public int getDstPort(){
-    return getPort(30, 4, byteData); //port start at 31
+    return getPort(30, 4, byteData); //port start at 31, size 4 bytes
   }
 
 }

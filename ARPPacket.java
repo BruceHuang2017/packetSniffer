@@ -1,19 +1,26 @@
 
 public class ARPPacket extends EthernetPacket{
 
-  public ARPPacket(int headerLen, byte [] byteData){
-    super(headerLen, byteData);
-    this.header = getHeader(0, headerLen, byteData);
-    this.data = getData(0, headerLen, byteData);
+  public ARPPacket(int ethernetHeaderLen, byte [] byteData){
+    super(ethernetHeaderLen, byteData);
+    int offset = ethernetHeaderLen;
+    // header == 8
+    this.header = getHeader(offset, 8, byteData);
+    this.data = getData(offset, 8, byteData);
+    this.packet = getWholePacket(offset, byteData);
 
+  }
+
+  public getARPPacket(){
+    return packet;
   }
 
   public byte [] getARPHeader(){
-    return header; //totally 28 bytes
+    return header; // size 8
   }
 
   public byte [] getARPData(){
-    return new byte[0];
+    return data; // size 20
   }
 
 

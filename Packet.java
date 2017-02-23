@@ -1,12 +1,9 @@
 import java.nio.ByteBuffer;
-/**
- * Packet driver.
- * Fetch a packet from internet and teardown to packetheader and packetdata.
- */
 
-public class Packet extends PacketDriver{
+public class Packet {
 
-//  SimplePacketDriver driver=new SimplePacketDriver();
+  public int ethernetHeaderLen = 14;
+  //default link type is ethernet, so ethernetHeaderLen = 14
 
   public static byte [] getHeader(int offset, int headerLen, byte [] byteData){
     byte [] header = new byte[headerLen];
@@ -32,11 +29,15 @@ public class Packet extends PacketDriver{
     return address;
   }
 
-  public static int getProtocol(int offset, int widthOfProtocol, byte [] byteData){
+  public start int getInteger(int offset, int width, byte [] byteData){
     int value = 0;
-    for(int i=0; i<widthOfProtocol; i++)
-      value |= ((byteData[offset + widthOfProtocol - i - 1] & 0xff) << 8 * i);
-    return value;
+    for(int i=0; i<width; i++)
+      value |= ((byteData[offset + width - i - 1] & 0xff) << 8 * i);
+    return value; // return binary value
+  }
+
+  public static int getProtocol(int offset, int widthOfProtocol, byte [] byteData){
+    return getInteger(offset, widthOfProtocol, byteData);
   }
 
   public static int getPort(int offset, int widthOfPort, byte [] byteData){

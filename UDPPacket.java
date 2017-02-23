@@ -3,28 +3,30 @@ public class UDPPacket extends IPPacket {
 
   byte [] header;
   byte [] data;
+  byte [] packet;
 
-  public UDPPacket(int headerLen, byte [] byteData){
-    super(headerLen, byteData);
-    int offset = 14 + 20; // same as ip
+  public UDPPacket(int ethernetHeaderLen, byte [] byteData){
+    super(ethernetHeaderLen, byteData);
+    int offset = ethernetHeaderLen + 20; // ip
     this.header = getHeader(offset, 8, byteData);
     this.data = getData(offset, 8, byteData);
+    this.packet = getWholePacket(offset, byteData);
   }
 
   public byte[] getUDPPacket(){
-    //eth header 14 + IP 20
-    return getWholePacket(34, byteData);
+    return packet;
   }
+
   public byte[] getUDPHeader(){
-    return header;
+    return header; //size 8
   }
 
   public byte [] getUDPData(){
-    return data;
+    return data; // size ?
   }
 
   public int getSrcPort(){
-    return getPort(26, 4, byteData); // port start at 27
+    return getPort(26, 4, byteData); // port start at 27 (ethernet + ip + someUdp)
   }
 
   public int getDstPort(){
