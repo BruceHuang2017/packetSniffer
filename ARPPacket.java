@@ -11,7 +11,7 @@ public class ARPPacket extends EthernetPacket{
 
   }
 
-  public getARPPacket(){
+  public byte [] getARPPacket(){
     return packet;
   }
 
@@ -22,6 +22,7 @@ public class ARPPacket extends EthernetPacket{
   public byte [] getARPData(){
     return data; // size 20
   }
+
 
 
 
